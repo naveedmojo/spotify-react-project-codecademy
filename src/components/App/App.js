@@ -7,7 +7,7 @@ import Playlist from '../Playlist/Playlist';
 function App() {
   return (
     <div >
-      <h1>Jammming</h1>
+      <h1 className='center' >Jammming</h1>
       <SearchBar />
       <div className={styles.resultsAndPlaylist}>
         <SearchResults />
