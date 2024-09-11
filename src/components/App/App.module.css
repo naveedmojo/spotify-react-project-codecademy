@@ -2,7 +2,7 @@ body{
 font-family: 'Montserrat', 'Arial', sans-serif;
 margin: 0;
 padding: 0;
-height: 100vh;
+min-height: 100vh;
 background: url("/src/images/bgimg.jpg") no-repeat center center fixed;
 background-size: cover;
 position: relative;

@@ -1,0 +1,38 @@
+
+  
+  .playlistContainer input[type="text"] {
+    background-color: #f5f3f3; /* Dark background for the input */
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px; /* Rounded corners for the input */
+    padding: 10px;
+    width: 100%;
+    max-width: 400px; /* Limit the input field width */
+    box-sizing: border-box; /* Ensure padding does not affect width */
+    margin:20px 0px; /* Space between input and button */
+    outline: none; 
+    box-shadow: none;
+    font-size: 1.175rem;
+  }
+  
+  
+  .saveButton {
+    background-color: #eb0b0b; /* Blue background */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition */
+    position: relative;
+    margin-top: 20px; /* Space above button */
+  }
+  
+  .saveButton:hover {
+    background-color: #0d9440; /* Darker shade for hover effect */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+  }
+  
+
+  

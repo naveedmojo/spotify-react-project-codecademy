@@ -9,9 +9,9 @@ function Playlist() {
   ];
 
   return (
-    <div >
+    <div className={styles.playlistContainer}>
       <h2>Playlist</h2>
-      <input type="text" defaultValue="New Playlist" />
+      <input type="text" placeholder='Type Your Playlist Name' />
       <Tracklist tracks={mockPlaylist} />
       <button className={styles.saveButton}>Save to Spotify</button>
     </div>
