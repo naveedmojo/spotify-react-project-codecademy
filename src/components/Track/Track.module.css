@@ -1,0 +1,28 @@
+.trackContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensure content is spaced between */
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Optional: to separate tracks visually */
+  }
+  
+  .actionButton {
+    background-color: #007bff; /* Adjust to match your search button color */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Adjust for rounded corners */
+    padding: 7px 13px;
+    cursor: pointer;
+    font-size: 1.275rem;
+    transition: background-color 0.3s,transform 0.3s ease;
+    position: relative;
+    font-weight: bold;
+  }
+  
+  .actionButton:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Darker shade for hover effect */
+  }
+  
+  
+  

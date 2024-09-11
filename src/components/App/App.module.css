@@ -18,4 +18,29 @@ body::before {
     background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
     z-index: -1; /* Ensure the overlay is behind the content */
   }
+  .resultsAndPlaylist {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
   
+  .searchResultsContainer,
+  .playlistContainer {
+    background-color: rgba(0, 0, 0, 0.3); /* Black with 50% transparency */
+    color: white; /* Ensure text is visible on black background */
+    border-radius: 8px; /* Optional: for rounded corners */
+    padding: 20px;
+    width: 40%; /* Adjust the width as needed */
+  }
+  @media (max-width: 768px) {
+    .resultsAndPlaylist {
+      flex-direction: column; /* Stack containers vertically */
+      align-items: center; /* Center containers */
+    }
+  
+    .searchResultsContainer,
+    .playlistContainer {
+      width: 100%; /* Make containers full-width on mobile */
+      margin-bottom: 20px; /* Add space between stacked containers */
+    }
+  }
