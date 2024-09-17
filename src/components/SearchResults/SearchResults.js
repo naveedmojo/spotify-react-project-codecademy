@@ -2,7 +2,6 @@ import React,{useState} from 'react';
 import Tracklist from '../Tracklist/Tracklist';
 
 function SearchResults({setplaylist}) {
-  console.log(setplaylist)
   function addToPlaylist(event) {
     const parent = event.target.parentNode;
     const h3 = parent.querySelector('h3');
@@ -10,9 +9,6 @@ function SearchResults({setplaylist}) {
     const trackName = h3 ? h3.textContent : "NO DATA";
     const trackDetails = p ? p.textContent : "NO DATA"; 
     const [Artist, Album] = trackDetails.split(' | ');
-
-    console.log("You have selected the ", trackName, Artist, Album);
-
     setplaylist((prev) => {
         // Check if the track already exists in the playlist
         const trackExists = prev.some(track => track.name === trackName && track.artist === Artist && track.album === Album);
@@ -45,7 +41,7 @@ function SearchResults({setplaylist}) {
   return (
     <div >
       <h2>Results</h2>
-      <Tracklist tracks={mockResults} addFunction={addToPlaylist}  />
+      <Tracklist tracks={mockResults} addFunction={addToPlaylist} buttonsymbol="+"  />
     </div>
   );
 }

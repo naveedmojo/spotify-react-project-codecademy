@@ -6,7 +6,6 @@ import Playlist from '../Playlist/Playlist';
 
 function App() {
   const [playList,setPlayList]=useState([
-    { id: 3, name: 'Song 3', artist: 'Artist 3', album: 'Album 3' }
   ])
   return (
     <div>
@@ -17,7 +16,7 @@ function App() {
           <SearchResults  setplaylist={setPlayList} />
         </div>
         <div className={styles.playlistContainer}>
-          <Playlist playlist={playList} />
+          <Playlist playlist={playList} setplaylist={setPlayList} />
         </div>
       </div>
     </div>

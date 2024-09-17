@@ -1,12 +1,11 @@
 import React from 'react';
-import styles from './Tracklist.module.css';
 import Track from '../Track/Track';
 
-function Tracklist({tracks,addFunction}) {
+function Tracklist({tracks,addFunction,buttonsymbol,removetrack}) {
   return (
     <div >
-      {tracks.map(track => (
-        <Track key={track.id} track={track} addToPlaylist={addFunction} />
+      {tracks.map((track,index) => (
+        <Track  buttonKey={index + 1} key={track.id} track={track} removeTrack={removetrack} addToPlaylist={addFunction} buttonvalue={buttonsymbol} />
       ))}
     </div>
   );
