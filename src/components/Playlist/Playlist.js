@@ -1,6 +1,7 @@
 import React,{useState} from 'react';
 import styles from './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
+import LoginSpotify from "../LoginSpotify";
 
 function Playlist({playlist,setplaylist}) {
   const [playlistName,setPlaylistName]=useState("My Playlist")
@@ -13,22 +14,15 @@ function Playlist({playlist,setplaylist}) {
       alert("name your playlist")
       return
     }
+    <LoginSpotify/>
     console.log(playlist)
   }
   
-  function removeTrack(event) {
-  const button = event.currentTarget;  // The button that was clicked
-  let allTrackContainers = button.parentElement.parentElement.querySelectorAll('[tracks="divTrackContainer"]');
-  const parentDiv = button.closest('[tracks="divTrackContainer"]'); 
-  const index = Array.prototype.indexOf.call(allTrackContainers, parentDiv)+1;
- setplaylist((prev)=>{
-  const updatedList= prev.filter(item=>item.id!==index).map((item, newIndex) => ({
-    ...item,
-    id: newIndex + 1 // Reset the id based on the new index (starting from 1)
-  }));
- return updatedList
- })
-  }
+  
+    function removeTrack(trackId) {
+      setplaylist((prev) => prev.filter((track) => track.id !== trackId));
+    }
+  
 
   return (
     <div className={styles.playlistContainer}>
