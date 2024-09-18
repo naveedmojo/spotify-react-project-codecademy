@@ -9,6 +9,9 @@ function Playlist({playlist,setplaylist}) {
   }
   function saveToSpotify(e){
     e.preventDefault()
+    if(!playlistName){
+      alert("name your playlist")
+    }
     console.log(playlist)
   }
   
