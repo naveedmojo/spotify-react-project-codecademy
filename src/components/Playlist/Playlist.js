@@ -11,6 +11,7 @@ function Playlist({playlist,setplaylist}) {
     e.preventDefault()
     if(!playlistName){
       alert("name your playlist")
+      return
     }
     console.log(playlist)
   }
