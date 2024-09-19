@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Tracklist from "../Tracklist/Tracklist";
 import styles from "./SearchResults.module.css";
 
@@ -6,10 +6,8 @@ function SearchResults({ setplaylist }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const accessToken = localStorage.getItem("spotify_access_token");
-
-  useEffect(() => {}, [accessToken]);
-
-  const handleSearch = () => {
+  // Function to handle search logic
+  const handleSearch = useCallback(() => {
     if (!searchQuery) return;
     if (!accessToken) {
       alert("You need to log in to search for tracks.");
@@ -43,7 +41,18 @@ function SearchResults({ setplaylist }) {
         setSearchResults(results);
       })
       .catch((error) => console.error("Error fetching search results:", error));
-  };
+  }, [searchQuery, accessToken]);
+
+  // Debounce the search input to avoid excessive API calls
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      if (searchQuery) {
+        handleSearch();
+      }
+    }, 300); // Debounce by 300ms
+
+    return () => clearTimeout(delayDebounceFn); // Cleanup timeout
+  }, [searchQuery, handleSearch]);
 
   const handleInputChange = (event) => {
     setSearchQuery(event.target.value);
@@ -51,35 +60,39 @@ function SearchResults({ setplaylist }) {
 
   const handleInputKeyDown = (event) => {
     if (event.key === "Enter") {
-      handleSearch(); // Trigger search when Enter is pressed
+      handleSearch();
     }
   };
 
-  const addToPlaylist = (event, track) => {
-    setplaylist((prev) => {
-      // Check if the track already exists in the playlist
-      const trackExists = prev.some(
-        (existingTrack) => existingTrack.uri === track.uri
-      );
+  // Function to add a track to the playlist
+  const addToPlaylist = useCallback(
+    (event, track) => {
+      setplaylist((prev) => {
+        // Check if the track already exists in the playlist
+        const trackExists = prev.some(
+          (existingTrack) => existingTrack.uri === track.uri
+        );
 
-      if (trackExists) {
-        alert("Selected Track already exists in Playlist");
-        return prev;
-      }
+        if (trackExists) {
+          alert("Selected Track already exists in Playlist");
+          return prev;
+        }
 
-      // Add the new track if it doesn't already exist
-      return [
-        ...prev,
-        {
-          id: track.id,
-          name: track.name,
-          artist: track.artist,
-          album: track.album,
-          uri: track.uri, // Include the URI here
-        },
-      ];
-    });
-  };
+        // Add the new track if it doesn't already exist
+        return [
+          ...prev,
+          {
+            id: track.id,
+            name: track.name,
+            artist: track.artist,
+            album: track.album,
+            uri: track.uri,
+          },
+        ];
+      });
+    },
+    [setplaylist]
+  );
 
   return (
     <div>
