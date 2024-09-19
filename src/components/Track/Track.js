@@ -9,7 +9,7 @@ function Track({ track,addToPlaylist,buttonvalue,removeTrack}) {
         <h3>{track.name}</h3>
         <p>{track.artist} | {track.album}</p>
       </div>
-      <button  onClick={event=>buttonvalue==="+"?addToPlaylist(event):removeTrack(track.id)} className={styles.actionButton}>{buttonvalue==="-"?<MdDelete />:"+"}</button>
+      <button  onClick={event=>buttonvalue==="+"?addToPlaylist(event,track):removeTrack(track.id)} className={styles.actionButton}>{buttonvalue==="-"?<MdDelete />:"+"}</button>
     </div>
   );
 }
