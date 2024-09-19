@@ -1,49 +1,46 @@
-body{
-font-family: 'Montserrat', 'Arial', sans-serif;
-margin: 0;
-padding: 0;
-min-height: 100vh;
-background: url("/src/images/bgimg.jpg") no-repeat center center fixed;
-background-size: cover;
-position: relative;
-
+body {
+  font-family: "Montserrat", "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: url("/src/images/bgimg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
 }
 body::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-    z-index: -1; /* Ensure the overlay is behind the content */
-  }
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+.resultsAndPlaylist {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.searchResultsContainer,
+.playlistContainer {
+  background-color: rgba(0, 0, 0, 0.3); /* Black with 50% transparency */
+  color: white; /* Ensure text is visible on black background */
+  border-radius: 8px; /* Optional: for rounded corners */
+  padding: 20px;
+  width: 40%; /* Adjust the width as needed */
+}
+@media (max-width: 768px) {
   .resultsAndPlaylist {
-    display: flex;
-    justify-content: space-around;
-    padding: 20px;
-    align-items: flex-start;
+    flex-direction: column; /* Stack containers vertically */
+    align-items: center; /* Center containers */
   }
-  
+
   .searchResultsContainer,
   .playlistContainer {
-    background-color: rgba(0, 0, 0, 0.3); /* Black with 50% transparency */
-    color: white; /* Ensure text is visible on black background */
-    border-radius: 8px; /* Optional: for rounded corners */
-    padding: 20px;
-    width: 40%; /* Adjust the width as needed */
-    
-    
+    width: 100%; /* Make containers full-width on mobile */
+    margin-bottom: 20px; /* Add space between stacked containers */
   }
-  @media (max-width: 768px) {
-    .resultsAndPlaylist {
-      flex-direction: column; /* Stack containers vertically */
-      align-items: center; /* Center containers */
-    }
-  
-    .searchResultsContainer,
-    .playlistContainer {
-      width: 100%; /* Make containers full-width on mobile */
-      margin-bottom: 20px; /* Add space between stacked containers */
-    }
-  }
+}
