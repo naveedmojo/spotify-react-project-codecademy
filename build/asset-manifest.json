@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.19f3d66c.css",
-    "main.js": "/static/js/main.c545bd63.js",
-    "static/media/bgimg.jpg": "/static/media/bgimg.64e16886d870add39961.jpg",
-    "index.html": "/index.html",
-    "main.19f3d66c.css.map": "/static/css/main.19f3d66c.css.map",
-    "main.c545bd63.js.map": "/static/js/main.c545bd63.js.map"
+    "main.css": "/naveedmojo/spotify-react-project-codecademy.git/static/css/main.dc68cac4.css",
+    "main.js": "/naveedmojo/spotify-react-project-codecademy.git/static/js/main.c545bd63.js",
+    "static/media/bgimg.jpg": "/naveedmojo/spotify-react-project-codecademy.git/static/media/bgimg.64e16886d870add39961.jpg",
+    "index.html": "/naveedmojo/spotify-react-project-codecademy.git/index.html",
+    "main.dc68cac4.css.map": "/naveedmojo/spotify-react-project-codecademy.git/static/css/main.dc68cac4.css.map",
+    "main.c545bd63.js.map": "/naveedmojo/spotify-react-project-codecademy.git/static/js/main.c545bd63.js.map"
   },
   "entrypoints": [
-    "static/css/main.19f3d66c.css",
+    "static/css/main.dc68cac4.css",
     "static/js/main.c545bd63.js"
   ]
 }
