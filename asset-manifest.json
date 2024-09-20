@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/naveedmojo/spotify-react-project-codecademy/static/css/main.d8160932.css",
-    "main.js": "/naveedmojo/spotify-react-project-codecademy/static/js/main.c545bd63.js",
-    "static/media/bgimg.jpg": "/naveedmojo/spotify-react-project-codecademy/static/media/bgimg.64e16886d870add39961.jpg",
-    "index.html": "/naveedmojo/spotify-react-project-codecademy/index.html",
-    "main.d8160932.css.map": "/naveedmojo/spotify-react-project-codecademy/static/css/main.d8160932.css.map",
-    "main.c545bd63.js.map": "/naveedmojo/spotify-react-project-codecademy/static/js/main.c545bd63.js.map"
+    "main.css": "/spotify-react-project-codecademy/static/css/main.2fccae11.css",
+    "main.js": "/spotify-react-project-codecademy/static/js/main.c545bd63.js",
+    "static/media/bgimg.jpg": "/spotify-react-project-codecademy/static/media/bgimg.64e16886d870add39961.jpg",
+    "index.html": "/spotify-react-project-codecademy/index.html",
+    "main.2fccae11.css.map": "/spotify-react-project-codecademy/static/css/main.2fccae11.css.map",
+    "main.c545bd63.js.map": "/spotify-react-project-codecademy/static/js/main.c545bd63.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8160932.css",
+    "static/css/main.2fccae11.css",
     "static/js/main.c545bd63.js"
   ]
 }
