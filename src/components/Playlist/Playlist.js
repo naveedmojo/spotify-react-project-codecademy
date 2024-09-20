@@ -5,10 +5,10 @@ import Tracklist from "../Tracklist/Tracklist";
 function Playlist({ playlist, setplaylist }) {
   const [playlistName, setPlaylistName] = useState("My Playlist");
   const [accessToken, setAccessToken] = useState("");
-  const [expiresIn, setExpiresIn] = useState("");
   const [authState, setAuthState] = useState("");
   const [error, setError] = useState(null);
 
+  // Helper function to generate a random string for the auth state
   function generateRandomString(length) {
     let text = "";
     const possible =
@@ -19,6 +19,7 @@ function Playlist({ playlist, setplaylist }) {
     return text;
   }
 
+  // Helper function to parse the Spotify response from the URL
   function parseSpotifyResponse() {
     const hash = window.location.hash.substring(1);
     const params = new URLSearchParams(hash);
@@ -28,24 +29,27 @@ function Playlist({ playlist, setplaylist }) {
     const storedAuthState = localStorage.getItem("spotify_auth_state");
 
     if (token && state === storedAuthState) {
+      const expirationTime = new Date().getTime() + Number(expires) * 1000;
+
       setAccessToken(token);
       localStorage.setItem("spotify_access_token", token);
-      setExpiresIn(expires);
+      localStorage.setItem("spotify_token_expiration", expirationTime); // Store expiration time
 
+      // Clean up the URL
       window.history.replaceState({}, document.title, window.location.pathname);
-
-      if (!isNaN(expires)) {
-        setTimeout(() => {
-          setAccessToken("");
-          localStorage.clear();
-          setError("Session expired. Please log in again.");
-        }, Number(expires) * 1000);
-      }
     } else {
       alert("Access denied or CSRF attack detected!");
     }
   }
 
+  // Helper function to check if the token is expired
+  function isTokenExpired() {
+    const expirationTime = localStorage.getItem("spotify_token_expiration");
+    if (!expirationTime) return true; // If no expiration time, consider token expired
+    return new Date().getTime() > expirationTime;
+  }
+
+  // Effect to handle token and playlist loading
   useEffect(() => {
     const storedPlaylist = localStorage.getItem("playlist");
     if (storedPlaylist) {
@@ -53,13 +57,20 @@ function Playlist({ playlist, setplaylist }) {
     }
 
     const storedToken = localStorage.getItem("spotify_access_token");
-    if (storedToken) {
+
+    if (storedToken && !isTokenExpired()) {
       setAccessToken(storedToken);
     } else if (window.location.hash) {
+      // If there's a hash, parse the response to get a new token
       parseSpotifyResponse();
+    } else {
+      // If token expired, clear it from localStorage
+      localStorage.removeItem("spotify_access_token");
+      localStorage.removeItem("spotify_token_expiration");
     }
   }, [setplaylist]);
 
+  // Function to handle Spotify login
   function loginSpotify() {
     localStorage.setItem("playlist", JSON.stringify(playlist));
     const client_id = "3a6a48e95f5c4d37ac533f5471a4702e";
@@ -79,10 +90,12 @@ function Playlist({ playlist, setplaylist }) {
     window.location.href = authorizeurl;
   }
 
+  // Handler for playlist name change
   function namechangehandler(event) {
     setPlaylistName(event.target.value);
   }
 
+  // Function to handle saving the playlist to Spotify
   function saveToSpotify(e) {
     e.preventDefault();
 
@@ -104,6 +117,7 @@ function Playlist({ playlist, setplaylist }) {
     saveplaylist(playlist);
   }
 
+  // Function to save the playlist to Spotify
   function saveplaylist(playlist) {
     fetch("https://api.spotify.com/v1/me", {
       headers: {
@@ -134,6 +148,7 @@ function Playlist({ playlist, setplaylist }) {
       .catch((error) => console.log(error));
   }
 
+  // Function to add tracks to the playlist
   function addTracksToPlaylist(playlistId, tracks) {
     const trackUris = tracks.map((track) => `spotify:track:${track.id}`);
 
@@ -154,6 +169,7 @@ function Playlist({ playlist, setplaylist }) {
       .catch((error) => console.error("Error adding tracks:", error));
   }
 
+  // Function to remove a track from the playlist
   function removeTrack(trackId) {
     setplaylist((prev) => prev.filter((track) => track.id !== trackId));
   }
