@@ -27,6 +27,9 @@
       "not dead",
       "not op_mini all"
     ],
+    "devDependencies": {
+      "@babel/plugin-proposal-private-property-in-object": "^7.1.0"
+    },
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
